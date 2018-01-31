@@ -9,7 +9,7 @@ defmodule RosesEprofTest do
 
   test "returns an output for cprof" do
     assert capture_io(fn -> Cprof.run(["-e", "RosesEprof.testing_flow"]) end) =~
-             ~r(GenStage                                                             952  <--)
+             ~r(Total                                                               5020)
   end
 
   test "returns an output for fprof" do
