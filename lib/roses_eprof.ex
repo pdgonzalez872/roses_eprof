@@ -12,4 +12,16 @@ defmodule RosesEprof do
     end)
     |> Enum.to_list()
   end
+
+  def testing_without_flow do
+    # same as https://github.com/elixir-lang/flow example
+    Path.join(["lib", "roses.txt"])
+    |> Path.absname()
+    |> File.stream!()
+    |> Stream.flat_map(&String.split(&1, " "))
+    |> Enum.reduce(%{}, fn word, acc ->
+        Map.update(acc, word, 1, & &1 + 1)
+    end)
+    |> Enum.to_list()
+  end
 end
